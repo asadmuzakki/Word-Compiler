@@ -41,7 +41,7 @@ public class Register extends javax.swing.JFrame {
 		confirmPassTxt = new javax.swing.JPasswordField();
 		
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
+		
 		jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 		
 		jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -234,6 +234,7 @@ public class Register extends javax.swing.JFrame {
 		);
 		
 		pack();
+		setLocationRelativeTo(null);
 	}// </editor-fold>//GEN-END:initComponents
 	
 	private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -254,18 +255,7 @@ public class Register extends javax.swing.JFrame {
 			confirmPassTxt.setText("");
 		}
 	}
-	private void userTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTxtActionPerformed
-		// TODO add your handling code here:
-	}//GEN-LAST:event_userTxtActionPerformed
-	
-	private void passTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passTxtActionPerformed
-		// TODO add your handling code here:
-	}//GEN-LAST:event_passTxtActionPerformed
-	
-	private void confirmPassTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPassTxtActionPerformed
-		// TODO add your handling code here:
-	}//GEN-LAST:event_confirmPassTxtActionPerformed
-	
+
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JLabel jLabel10;
 	private javax.swing.JLabel loginLabel;

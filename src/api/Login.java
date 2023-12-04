@@ -12,7 +12,7 @@ public static boolean isValidUser(String username, String password) {
 			statement.setString(2, password);
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
-				JDBC.setUser_id(resultSet.getString("id"));
+				JDBC.setUser_id(resultSet.getInt("id"));
 				found = true;
 			}
 		} catch (Exception e) {

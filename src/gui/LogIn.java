@@ -5,6 +5,7 @@ package gui;/*
 
 import api.JDBC;
 import api.Login;
+import api.Profile;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -42,7 +43,7 @@ public class LogIn extends javax.swing.JFrame {
 		passTxt = new javax.swing.JPasswordField();
 		
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
+		
 		jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 		
 		jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
@@ -78,7 +79,7 @@ public class LogIn extends javax.swing.JFrame {
           @Override
           public void keyPressed(KeyEvent e) {
               if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                  authUser();
+                 authUser();
               }
           }
           
@@ -97,6 +98,7 @@ public class LogIn extends javax.swing.JFrame {
           public void keyPressed(KeyEvent e) {
               if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                   authUser();
+						
               }
           }
           
@@ -173,6 +175,7 @@ public class LogIn extends javax.swing.JFrame {
 		);
 		
 		pack();
+		setLocationRelativeTo(null);
 	}// </editor-fold>//GEN-END:initComponents
 	
 	private void passTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passTxtActionPerformed
@@ -184,6 +187,7 @@ public class LogIn extends javax.swing.JFrame {
 		String password = String.valueOf(passTxt.getPassword());
 		if (Login.isValidUser(username, password)) {
 			JOptionPane.showMessageDialog(LogIn.this, "Login Berhasil", "Success", JOptionPane.INFORMATION_MESSAGE);
+			Profile.showProfile(JDBC.getUser_id());
 			new UserProfile().setVisible(true);
 			dispose();
 		} else {
