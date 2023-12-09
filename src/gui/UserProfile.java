@@ -3,6 +3,7 @@ package gui;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import api.MainGame;
 import api.Profile;
 
 import java.util.Objects;
@@ -137,11 +138,14 @@ public class UserProfile extends javax.swing.JFrame {
         gameBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         if(lvlLabel.getText().equals("0")){
             gameBtn.setText("New Game");
+            stateGame = gameBtn.getText();
         } else {
             gameBtn.setText("Continue");
+            stateGame = gameBtn.getText();
         }
          gameBtn.addMouseListener(new java.awt.event.MouseAdapter() {
                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                   MainGame.startGame();
                   new Main().setVisible(true);
                   dispose();
                }
@@ -254,5 +258,6 @@ public class UserProfile extends javax.swing.JFrame {
     private javax.swing.JLabel lvlLabel;
     private javax.swing.JLabel scoreLabel;
     private javax.swing.JLabel usernameLabel;
+    public static String stateGame;
     // End of variables declaration//GEN-END:variables
 }
