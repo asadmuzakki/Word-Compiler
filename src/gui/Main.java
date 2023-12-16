@@ -1,6 +1,8 @@
 package gui;
 
+import api.JDBC;
 import api.MainGame;
+import api.Profile;
 
 import javax.swing.*;
 import java.util.Arrays;
@@ -14,8 +16,6 @@ public class Main extends javax.swing.JFrame {
 	
 	@SuppressWarnings("unchecked")
 	private void initComponents() {
-		
-		
 		jInternalFrame1 = new javax.swing.JInternalFrame();
 		jPanel2 = new javax.swing.JPanel();
 		lvlLabel = new javax.swing.JLabel();
@@ -61,7 +61,6 @@ public class Main extends javax.swing.JFrame {
 		lvlLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 		lvlLabel.setForeground(new java.awt.Color(255, 255, 255));
 		lvlLabel.setText("Level " + MainGame.level);
-		System.out.println(MainGame.level);
 		displayAns.setEditable(false);
 		
 		jPanel1.setBackground(new java.awt.Color(0, 77, 230));
@@ -228,8 +227,7 @@ public class Main extends javax.swing.JFrame {
 		
 		scoreLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 		scoreLabel.setForeground(new java.awt.Color(255, 255, 255));
-		scoreLabel.setText("SCORE:");
-		
+		scoreLabel.setText("SCORE: " + Profile.score);
 		javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
 		jPanel9.setLayout(jPanel9Layout);
 		jPanel9Layout.setHorizontalGroup(
@@ -394,12 +392,18 @@ public class Main extends javax.swing.JFrame {
 			if (wordList.contains(displayAns.getText())) {
 				if (cekList()) {
 					addItemToList();
-					setScore();
 					displayAns.setText("");
 				}
+				pack();
 			} else {
 				JOptionPane.showMessageDialog(Main.this, "Kata tidak ditemukan", "Warning", JOptionPane.WARNING_MESSAGE);
 				displayAns.setText("");
+			}
+			if (listModel.getSize() == MainGame.answer.length) {
+				MainGame.updateScore();
+				Profile.showProfile(JDBC.getUser_id());
+				new UserProfile().setVisible(true);
+				dispose();
 			}
 		});
 	}
@@ -407,6 +411,14 @@ public class Main extends javax.swing.JFrame {
 	public void addItemToList() {
 		String newItem = displayAns.getText();
 		listModel.addElement(newItem);
+		setScore(newItem.length());
+	}
+	
+	public void setScore(int wordLenght) {
+		Profile.score += wordLenght*10;
+//		score += Profile.score + (wordLenght * 10);
+		scoreLabel.setText("SCORE: " + Profile.score);
+		score = Profile.score;
 	}
 	
 	public boolean cekList() {
@@ -421,11 +433,6 @@ public class Main extends javax.swing.JFrame {
 			}
 		}
 		return true;
-	}
-	
-	public void setScore() {
-		score += displayAns.getText().length() * 10;
-		scoreLabel.setText("SCORE: " + score);
 	}
 	
 	/**
@@ -491,6 +498,6 @@ public class Main extends javax.swing.JFrame {
 	private javax.swing.JTextField displayAns;
 	private DefaultListModel<String> listModel = new DefaultListModel<>();
 	private List<String> wordList = Arrays.asList(MainGame.answer);
-	private int score;
+	public static int score;
 	// End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,7 @@
 package api;
 
 import gui.UserProfile;
+import gui.Main;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,7 +42,16 @@ public class MainGame {
 			e.printStackTrace();
 		}
 	}
-	public static void countScore(){
-	
+	public static void updateScore(){
+		try {
+			String query = "UPDATE users SET score = ?, level = ? WHERE id = ?";
+			PreparedStatement statement = JDBC.client.prepareStatement(query);
+			statement.setInt(1, Main.score);
+			statement.setInt(2, level+1);
+			statement.setInt(3, JDBC.getUser_id());
+			statement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
