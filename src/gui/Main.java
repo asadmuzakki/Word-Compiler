@@ -8,7 +8,6 @@ public class Main extends javax.swing.JFrame {
         @SuppressWarnings("unchecked")
         private void initComponents() {
 
-
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jPanel2 = new javax.swing.JPanel();
         lvlLabel = new javax.swing.JLabel();
@@ -33,6 +32,7 @@ public class Main extends javax.swing.JFrame {
         scoreLabel = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         timeLabel = new javax.swing.JLabel();
+        clearBtn = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -55,10 +55,23 @@ public class Main extends javax.swing.JFrame {
         lvlLabel.setForeground(new java.awt.Color(255,255,255));
         lvlLabel.setText("Level ");
 
-        displayAns.setText("displayAns");
+        displayAns.setText("TEST");
+        displayAns.setFont(new java.awt.Font("Segoe UI", 0, 16));
         displayAns.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 displayAnsActionPerformed(evt);
+            }
+        });
+
+        clearBtn = new javax.swing.JButton();
+        clearBtn.setFont(new java.awt.Font("Segoe UI", 1, 12));
+        clearBtn.setText("X");
+        clearBtn.setBackground(new java.awt.Color(0, 77, 230));
+        clearBtn.setForeground(new java.awt.Color(255, 255, 255));
+        clearBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtnActionPerformed(evt);
             }
         });
 
@@ -278,7 +291,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(displayAns, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(displayAns, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -300,7 +313,8 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(submitBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(randBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(clearBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)) // Tombol "X"
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -336,7 +350,9 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(randBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(displayAns))
-                .addGap(18, 18, 18))
+                .addGap(8, 8, 8)
+                .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE) 
+                .addGap(5, 5, 5))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -359,6 +375,9 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_displayAnsActionPerformed
 
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {
+        displayAns.setText(""); // Clear the text in the displayAns field
+    }
     /**
      * @param args the command line arguments
      */
@@ -420,5 +439,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField displayAns;
+    private javax.swing.JButton clearBtn;
     // End of variables declaration//GEN-END:variables
 }
