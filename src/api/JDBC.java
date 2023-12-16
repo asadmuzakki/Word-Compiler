@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class JDBC {
 	public static Connection client;
-	public static String user_id;
+	private static int user_id;
 	
 	public JDBC() {
 		try {
@@ -21,10 +21,10 @@ public class JDBC {
 			System.exit(1);
 		}
 	}
-	public static void setUser_id(String user_id) {
+	public static void setUser_id(int user_id) {
 		JDBC.user_id = user_id;
 	}
-	public static String getUser_id() {
+	public static int getUser_id() {
 		return user_id;
 	}
 }
