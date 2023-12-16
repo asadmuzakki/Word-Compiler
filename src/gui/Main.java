@@ -1,8 +1,6 @@
 package gui;
 
-import api.JDBC;
-import api.MainGame;
-import api.Profile;
+import api.*;
 
 import javax.swing.*;
 import java.util.Arrays;
@@ -37,9 +35,11 @@ public class Main extends javax.swing.JFrame {
 		jPanel8 = new javax.swing.JPanel();
 		jLabel2 = new javax.swing.JLabel();
 		jPanel9 = new javax.swing.JPanel();
-		scoreLabel = new javax.swing.JLabel();
+		scoreLabel = new ScoreLabel();
 		jPanel10 = new javax.swing.JPanel();
-		timeLabel = new javax.swing.JLabel();
+//		timeLabel = new javax.swing.JLabel();
+		timerLabel = new TimerLabel();
+		clearBtn = new javax.swing.JButton();
 		
 		jInternalFrame1.setVisible(true);
 		
@@ -194,7 +194,16 @@ public class Main extends javax.swing.JFrame {
 										.addComponent(word5Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 										.addContainerGap())
 		);
-		
+		clearBtn = new javax.swing.JButton();
+		clearBtn.setFont(new java.awt.Font("Segoe UI", 1, 12));
+		clearBtn.setText("X");
+		clearBtn.setBackground(new java.awt.Color(0, 77, 230));
+		clearBtn.setForeground(new java.awt.Color(255, 255, 255));
+		clearBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+		clearBtn.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+			}
+		});
 		answerList = new JList<>(listModel);
 		jScrollPane1.setViewportView(answerList);
 		
@@ -227,7 +236,6 @@ public class Main extends javax.swing.JFrame {
 		
 		scoreLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 		scoreLabel.setForeground(new java.awt.Color(255, 255, 255));
-		scoreLabel.setText("SCORE: " + Profile.score);
 		javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
 		jPanel9.setLayout(jPanel9Layout);
 		jPanel9Layout.setHorizontalGroup(
@@ -247,9 +255,8 @@ public class Main extends javax.swing.JFrame {
 		
 		jPanel10.setBackground(new java.awt.Color(0, 77, 230));
 		
-		timeLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-		timeLabel.setForeground(new java.awt.Color(255, 255, 255));
-		timeLabel.setText("WAKTU:");
+		timerLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+		timerLabel.setForeground(new java.awt.Color(255, 255, 255));
 		
 		javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
 		jPanel10.setLayout(jPanel10Layout);
@@ -257,49 +264,50 @@ public class Main extends javax.swing.JFrame {
 				  jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 							 .addGroup(jPanel10Layout.createSequentialGroup()
 										.addContainerGap()
-										.addComponent(timeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(timerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 										.addContainerGap())
 		);
 		jPanel10Layout.setVerticalGroup(
 				  jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 							 .addGroup(jPanel10Layout.createSequentialGroup()
 										.addContainerGap()
-										.addComponent(timeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(timerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 										.addContainerGap())
 		);
 		
 		javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-		jPanel2.setLayout(jPanel2Layout);
-		jPanel2Layout.setHorizontalGroup(
-				  jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-							 .addGroup(jPanel2Layout.createSequentialGroup()
-										.addGap(22, 22, 22)
-										.addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-												  .addComponent(displayAns, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-												  .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-															 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-															 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-															 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-															 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-															 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-															 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-															 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-															 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-															 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-												  .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-															 .addComponent(lvlLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-															 .addGap(35, 35, 35)
-															 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-															 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-															 .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-										.addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-												  .addComponent(submitBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-												  .addComponent(randBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-												  .addComponent(jScrollPane1)
-												  .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-										.addContainerGap())
-		);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(displayAns, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(lvlLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(submitBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(randBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(clearBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)) // Tombol "X"
+                .addContainerGap())
+        );
 		jPanel2Layout.setVerticalGroup(
 				  jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 							 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -333,7 +341,9 @@ public class Main extends javax.swing.JFrame {
 															 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 															 .addComponent(randBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
 												  .addComponent(displayAns))
-										.addGap(18, 18, 18))
+										.addGap(8, 8, 8)
+										.addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addGap(5, 5, 5))
 		);
 		
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -413,11 +423,8 @@ public class Main extends javax.swing.JFrame {
 		listModel.addElement(newItem);
 		setScore(newItem.length());
 	}
-	
 	public void setScore(int wordLenght) {
-		Profile.score += wordLenght*10;
-//		score += Profile.score + (wordLenght * 10);
-		scoreLabel.setText("SCORE: " + Profile.score);
+		Profile.score += wordLenght * 10;
 		score = Profile.score;
 	}
 	
@@ -481,8 +488,8 @@ public class Main extends javax.swing.JFrame {
 	private javax.swing.JLabel word3Label;
 	private javax.swing.JLabel word4Label;
 	private javax.swing.JLabel word5Label;
-	private javax.swing.JLabel scoreLabel;
-	private javax.swing.JLabel timeLabel;
+	public ScoreLabel scoreLabel;
+	public TimerLabel timerLabel;
 	private javax.swing.JList<String> answerList;
 	private javax.swing.JPanel jPanel1;
 	private javax.swing.JPanel jPanel10;
@@ -499,5 +506,6 @@ public class Main extends javax.swing.JFrame {
 	private DefaultListModel<String> listModel = new DefaultListModel<>();
 	private List<String> wordList = Arrays.asList(MainGame.answer);
 	public static int score;
+	private javax.swing.JButton clearBtn;
 	// End of variables declaration//GEN-END:variables
 }

@@ -93,6 +93,7 @@ public class UserProfile extends javax.swing.JFrame {
         jPanel2 = new JPanel();
         jLabel1 = new javax.swing.JLabel();
         usernameLabel = new javax.swing.JLabel();
+        leaderBoardBtn = new javax.swing.JButton();
         jPanel3 = new JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -156,23 +157,37 @@ public class UserProfile extends javax.swing.JFrame {
                 dispose();
             }
         });
-        GroupLayout jPanel4Layout = new GroupLayout(jPanel4);
+        
+        leaderBoardBtn.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        leaderBoardBtn.setBackground(new java.awt.Color(52,8,87));
+        leaderBoardBtn.setForeground(new java.awt.Color(255, 255, 255));
+        leaderBoardBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        leaderBoardBtn.setText("Leaderboard");
+        leaderBoardBtn.addActionListener(evt -> {
+            new Leaderboard().setVisible(true);
+            dispose();
+        });
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(gameBtn, GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                    .addContainerGap())
+                jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(gameBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(leaderBoardBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, Short.MAX_VALUE)
+                                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(gameBtn, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                    .addContainerGap())
+                jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(gameBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                                        .addComponent(leaderBoardBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
+                                .addContainerGap())
         );
-
+        
         GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -244,6 +259,7 @@ public class UserProfile extends javax.swing.JFrame {
     private JButton gameBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel usernameLabel;
+    private JButton leaderBoardBtn;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel scoreLabel;
