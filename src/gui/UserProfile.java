@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 public class UserProfile extends javax.swing.JFrame {
 
     private JButton gameBtn;
-    private JButton leaderBoardBtn; // Tambahkan tombol Leaderboard
+    private JButton leaderBoardBtn; 
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JLabel jLabel3;
