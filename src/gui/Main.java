@@ -488,7 +488,7 @@ public class Main extends javax.swing.JFrame {
 	private javax.swing.JLabel word3Label;
 	private javax.swing.JLabel word4Label;
 	private javax.swing.JLabel word5Label;
-	public static ScoreLabel scoreLabel;
+	public ScoreLabel scoreLabel;
 	public TimerLabel timerLabel;
 	private javax.swing.JList<String> answerList;
 	private javax.swing.JPanel jPanel1;
