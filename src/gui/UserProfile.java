@@ -35,7 +35,6 @@ public class UserProfile extends javax.swing.JFrame {
             }
         });
 
-        // Tambahkan ActionListener untuk tombol Leaderboard
         leaderBoardBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
