@@ -1,13 +1,16 @@
 package api;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class Profile {
 	public static String username;
 	public static int level;
 	public static int score;
-	public static void showProfile(int id){
-		try{
+	
+	public static void showProfile(int id) {
+		try {
 			String query = "SELECT * FROM users WHERE id = ?";
 			PreparedStatement statement = JDBC.client.prepareStatement(query);
 			statement.setInt(1, id);

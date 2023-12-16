@@ -165,7 +165,6 @@ public class UserProfile extends javax.swing.JFrame {
         leaderBoardBtn.setText("Leaderboard");
         leaderBoardBtn.addActionListener(evt -> {
             new Leaderboard().setVisible(true);
-            dispose();
         });
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);

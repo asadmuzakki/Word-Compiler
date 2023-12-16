@@ -46,9 +46,20 @@ public class MainGame {
 		try {
 			String query = "UPDATE users SET score = ?, level = ? WHERE id = ?";
 			PreparedStatement statement = JDBC.client.prepareStatement(query);
-			statement.setInt(1, Main.score);
+			statement.setInt(1, Profile.score);
 			statement.setInt(2, level+1);
 			statement.setInt(3, JDBC.getUser_id());
+			statement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static void updateScoreIfFinished(){
+		try {
+			String query = "UPDATE users SET score = ? WHERE id = ?";
+			PreparedStatement statement = JDBC.client.prepareStatement(query);
+			statement.setInt(1, Profile.score);
+			statement.setInt(2, JDBC.getUser_id());
 			statement.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

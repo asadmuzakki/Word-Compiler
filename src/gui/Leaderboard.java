@@ -1,7 +1,11 @@
 package gui;
 
+import api.JDBC;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class Leaderboard extends javax.swing.JFrame {
 
@@ -11,23 +15,13 @@ public class Leaderboard extends javax.swing.JFrame {
     }
 
     private void initializeTable() {
-        DefaultTableModel model = new DefaultTableModel();
 
         model.addColumn("Level");
         model.addColumn("Player");
         model.addColumn("Score");
 
-        model.addRow(new Object[]{"", "Player 1", ""});
-        model.addRow(new Object[]{"", "Player 2", ""});
-        model.addRow(new Object[]{"", "Player 3", ""});
-        model.addRow(new Object[]{"", "Player 4", ""});
-        model.addRow(new Object[]{"", "Player 5", ""});
-        model.addRow(new Object[]{"", "Player 6", ""});
-        model.addRow(new Object[]{"", "Player 7", ""});
-        model.addRow(new Object[]{"", "Player 8", ""});
-        model.addRow(new Object[]{"", "Player 9", ""});
-        model.addRow(new Object[]{"", "Player 10", ""});
-
+//        model.addRow(new Object[]{"1", "Player 1", "3"});
+        showLeaderboard();
         JTable jTable = new JTable(model);
         scrollPanePlayer.setViewportView(jTable);
         scrollPanePlayer.setBackground(new java.awt.Color(153, 153, 153));;
@@ -42,7 +36,7 @@ public class Leaderboard extends javax.swing.JFrame {
         scrollPanePlayer = new javax.swing.JScrollPane();
         jListPlayer = new javax.swing.JList<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -87,12 +81,26 @@ public class Leaderboard extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    public void showLeaderboard() {
+        try {
+            String query = "SELECT * FROM users ORDER BY score DESC";
+            try (PreparedStatement statement = JDBC.client.prepareStatement(query)) {
+                ResultSet resultSet = statement.executeQuery();
+                while (resultSet.next()) {
+                    model.addRow(new Object[]{""+resultSet.getInt("level"), resultSet.getString("username"), ""+resultSet.getInt("score")});
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        JDBC api = new JDBC();
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -125,4 +133,5 @@ public class Leaderboard extends javax.swing.JFrame {
     private javax.swing.JPanel background;
     private javax.swing.JScrollPane scrollPanePlayer;
     // End of variables declaration//GEN-END:variables
+    public DefaultTableModel model = new DefaultTableModel();
 }

@@ -2,17 +2,17 @@ package api;
 
 import javax.swing.*;
 
-public class TimerLabel extends JLabel implements Runnable{
-	private int time;
-	private boolean isRunning;
+public class TimerLabel extends JLabel implements Runnable {
+	public int time;
+	public boolean isRunning;
 	private Thread thread;
 	
 	public TimerLabel() {
-		time = 300;
+		time = 20;
 		isRunning = false;
 		thread = new Thread(this);
-		start();
 		thread.start();
+		start();
 	}
 	
 	public void start() {
@@ -37,11 +37,14 @@ public class TimerLabel extends JLabel implements Runnable{
 	public void run() {
 		while (true) {
 			if (isRunning) {
-				if(time == 0) {
+				time--;
+				SwingUtilities.invokeLater(() -> setText("WAKTU: " + getTime()));
+				if (time == 0) {
 					stop();
 				}
-				time--;
-				setText(getTime());
+				if (time % 15 == 0) {
+					Profile.score -= 5;
+				}
 			}
 			try {
 				Thread.sleep(1000);
