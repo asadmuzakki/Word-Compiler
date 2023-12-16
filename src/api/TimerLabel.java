@@ -8,7 +8,7 @@ public class TimerLabel extends JLabel implements Runnable {
 	private Thread thread;
 	
 	public TimerLabel() {
-		time = 20;
+		time = 300;
 		isRunning = false;
 		thread = new Thread(this);
 		thread.start();
