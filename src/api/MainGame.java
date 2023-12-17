@@ -11,13 +11,20 @@ import java.util.Collections;
 import java.util.List;
 
 public class MainGame {
-	public static String stateGame = UserProfile.stateGame;
-	public static String[] word;
-	public static String[] answer;
-	public static int level;
-	
+	private static String[] word;
+	private static String[] answer;
+	private static int level;
+	public static String[] getWord(){
+		return word;
+	}
+	public static String[] getAnswer(){
+		return answer;
+	}
+	public static int getLevel(){
+		return level;
+	}
 	public static void startGame() {
-		if (stateGame.equals("New Game")) {
+		if (UserProfile.stateGame.equals("New Game")) {
 			level += 1;
 			updateuser(JDBC.getUser_id());
 		}
@@ -49,7 +56,7 @@ public class MainGame {
 		try {
 			String query = "UPDATE users SET score = ?, level = ? WHERE id = ?";
 			PreparedStatement statement = JDBC.client.prepareStatement(query);
-			statement.setInt(1, Profile.score);
+			statement.setInt(1, Profile.getScore());
 			statement.setInt(2, level+1);
 			statement.setInt(3, JDBC.getUser_id());
 			statement.executeUpdate();
@@ -61,7 +68,7 @@ public class MainGame {
 		try {
 			String query = "UPDATE users SET score = ? WHERE id = ?";
 			PreparedStatement statement = JDBC.client.prepareStatement(query);
-			statement.setInt(1, Profile.score);
+			statement.setInt(1, Profile.getScore());
 			statement.setInt(2, JDBC.getUser_id());
 			statement.executeUpdate();
 		} catch (Exception e) {

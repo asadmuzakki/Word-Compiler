@@ -4,10 +4,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class Profile {
-	public static String username;
-	public static int level;
-	public static int score;
-	
+	private static String username;
+	private static int level;
+	private static int score;
+	public static String getUsername() {
+		return username;
+	}
+	public static int getLevel() {
+		return level;
+	}
+	public static int getScore() {
+		return score;
+	}
+	public static void setScore(int score) {
+		Profile.score = score;
+	}
 	public static void showProfile() {
 		try {
 			String query = "SELECT * FROM users WHERE id = ?";

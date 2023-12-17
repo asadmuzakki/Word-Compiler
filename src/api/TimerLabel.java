@@ -5,8 +5,8 @@ import gui.UserProfile;
 import javax.swing.*;
 
 public class TimerLabel extends JLabel implements Runnable {
-	public int time;
-	public boolean isRunning;
+	private int time;
+	private boolean isRunning;
 	private Thread thread;
 
 	public TimerLabel() {
@@ -53,7 +53,8 @@ public class TimerLabel extends JLabel implements Runnable {
 					stop();
 				}
 				if (time % 15 == 0) {
-					Profile.score -= 5;
+					int score = Profile.getScore();
+					Profile.setScore(score -= 5);
 				}
 			}
 			try {

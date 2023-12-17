@@ -39,12 +39,11 @@ public class UserProfile extends javax.swing.JFrame {
         scoreLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
         scoreLabel.setForeground(new Color(255, 255, 255));
         scoreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        scoreLabel.setText(""+Profile.score);
-
+        scoreLabel.setText(""+Profile.getScore());
         lvlLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
         lvlLabel.setForeground(new Color(255, 255, 255));
         lvlLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lvlLabel.setText(""+Profile.level);
+        lvlLabel.setText(""+Profile.getLevel());
         if(lvlLabel.getText().equals("0")){
             gameBtn.setText("New Game");
         } else {
@@ -116,7 +115,7 @@ public class UserProfile extends javax.swing.JFrame {
         usernameLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         usernameLabel.setForeground(new Color(255, 255, 255));
         usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        usernameLabel.setText(Profile.username);
+        usernameLabel.setText(Profile.getUsername());
         GroupLayout jPanel2Layout = new GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(

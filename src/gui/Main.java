@@ -59,7 +59,7 @@ public class Main extends javax.swing.JFrame {
 		
 		lvlLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 		lvlLabel.setForeground(new java.awt.Color(255, 255, 255));
-		lvlLabel.setText("Level " + MainGame.level);
+		lvlLabel.setText("Level " + MainGame.getLevel());
 		displayAns.setEditable(false);
 		
 		jPanel1.setBackground(new java.awt.Color(0, 77, 230));
@@ -206,7 +206,7 @@ public class Main extends javax.swing.JFrame {
 		jLabel2.setForeground(new java.awt.Color(255, 255, 255));
 		
 		jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		jLabel2.setText("Kata yang Benar : " + MainGame.answer.length);
+		jLabel2.setText("Kata yang Benar : " + answer.length);
 		
 		javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
 		jPanel8.setLayout(jPanel8Layout);
@@ -357,11 +357,12 @@ public class Main extends javax.swing.JFrame {
 	}// </editor-fold>//GEN-END:initComponents
 	
 	public void setWord() {
-		wordLabel.setText(MainGame.word[0]);
-		word2Label.setText(MainGame.word[1]);
-		word3Label.setText(MainGame.word[2]);
-		word4Label.setText(MainGame.word[3]);
-		word5Label.setText(MainGame.word[4]);
+		String[] word = MainGame.getWord();
+		wordLabel.setText(word[0]);
+		word2Label.setText(word[1]);
+		word3Label.setText(word[2]);
+		word4Label.setText(word[3]);
+		word5Label.setText(word[4]);
 		wordLabel.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				displayAns.setText(displayAns.getText() + wordLabel.getText());
@@ -405,7 +406,7 @@ public class Main extends javax.swing.JFrame {
 					JOptionPane.showMessageDialog(Main.this, "Kata tidak ditemukan", "Warning", JOptionPane.WARNING_MESSAGE);
 					displayAns.setText("");
 				}
-				if (listModel.getSize() == MainGame.answer.length) {
+				if (listModel.getSize() == answer.length) {
 					JOptionPane.showMessageDialog(Main.this, "Selamat Anda Menang", "Success", JOptionPane.INFORMATION_MESSAGE);
 					MainGame.updateScore();
 					Profile.showProfile();
@@ -431,7 +432,9 @@ public class Main extends javax.swing.JFrame {
 	}
 	
 	public void setScore(int wordLenght) {
-		Profile.score += wordLenght * 10;
+		int score = Profile.getScore();
+		score += wordLenght * 10;
+		Profile.setScore(score);
 	}
 	
 	public boolean cekList() {
@@ -509,8 +512,10 @@ public class Main extends javax.swing.JFrame {
 	private javax.swing.JScrollPane jScrollPane1;
 	private javax.swing.JTextField displayAns;
 	private DefaultListModel<String> listModel = new DefaultListModel<>();
-	private List<String> wordList = Arrays.asList(MainGame.answer);
+	private List<String> wordList = Arrays.asList(MainGame.getAnswer());
 //	public static int score;
 	private javax.swing.JButton clearBtn;
+	private String[] word = MainGame.getWord();
+	private String[] answer = MainGame.getAnswer();
 	// End of variables declaration//GEN-END:variables
 }

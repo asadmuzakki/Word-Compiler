@@ -25,7 +25,7 @@ public class ScoreLabel extends JLabel implements Runnable{
 	public void run() {
 		while (true) {
 			if (isRunning) {
-				setText("Score : " + Profile.score);
+				setText("Score : " + Profile.getScore());
 			}
 			try {
 				Thread.sleep(1000);
