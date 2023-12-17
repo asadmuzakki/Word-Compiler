@@ -18,10 +18,8 @@ public class ScoreLabel extends JLabel implements Runnable{
 	public void stop() {
 		isRunning = false;
 	}
-	
-	public void reset() {
 
-	}
+	public void reset() {}
 	
 	@Override
 	public void run() {

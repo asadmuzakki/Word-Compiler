@@ -37,7 +37,6 @@ public class Main extends javax.swing.JFrame {
 		jPanel9 = new javax.swing.JPanel();
 		scoreLabel = new ScoreLabel();
 		jPanel10 = new javax.swing.JPanel();
-//		timeLabel = new javax.swing.JLabel();
 		timerLabel = new TimerLabel();
 		clearBtn = new javax.swing.JButton();
 		
@@ -392,6 +391,9 @@ public class Main extends javax.swing.JFrame {
 	
 	public void game() {
 			setWord();
+		randBtn.addActionListener(e -> {
+			shuffleLetters();
+		});
 			submitBtn.addActionListener(e -> {
 				if (wordList.contains(displayAns.getText())) {
 					if (cekList()) {
@@ -406,13 +408,22 @@ public class Main extends javax.swing.JFrame {
 				if (listModel.getSize() == MainGame.answer.length) {
 					JOptionPane.showMessageDialog(Main.this, "Selamat Anda Menang", "Success", JOptionPane.INFORMATION_MESSAGE);
 					MainGame.updateScore();
-					Profile.showProfile(JDBC.getUser_id());
+					Profile.showProfile();
 					new UserProfile().setVisible(true);
 					dispose();
 				}
 			});
+			
 	}
-	
+	private void shuffleLetters() {
+		String[] shuffledWord = MainGame.shuffleWord();
+		wordLabel.setText(shuffledWord[0]);
+		word2Label.setText(shuffledWord[1]);
+		word3Label.setText(shuffledWord[2]);
+		word4Label.setText(shuffledWord[3]);
+		word5Label.setText(shuffledWord[4]);
+	}
+
 	public void addItemToList() {
 		String newItem = displayAns.getText();
 		listModel.addElement(newItem);
@@ -490,7 +501,6 @@ public class Main extends javax.swing.JFrame {
 	private javax.swing.JPanel jPanel10;
 	private javax.swing.JPanel jPanel2;
 	private javax.swing.JPanel jPanel3;
-	private javax.swing.JPanel jPanel4;
 	private javax.swing.JPanel jPanel5;
 	private javax.swing.JPanel jPanel6;
 	private javax.swing.JPanel jPanel7;

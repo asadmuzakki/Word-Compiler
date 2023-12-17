@@ -1,11 +1,14 @@
 package api;
 
 import gui.UserProfile;
-import gui.Main;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class MainGame {
 	public static String stateGame = UserProfile.stateGame;
@@ -54,7 +57,7 @@ public class MainGame {
 			e.printStackTrace();
 		}
 	}
-	public static void updateScoreIfFinished(){
+	public static void updateScoreIfTimesUp(){
 		try {
 			String query = "UPDATE users SET score = ? WHERE id = ?";
 			PreparedStatement statement = JDBC.client.prepareStatement(query);
@@ -64,5 +67,10 @@ public class MainGame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	public static String[] shuffleWord() {
+		List<String> shuffledList = new ArrayList<>(Arrays.asList(word));
+		Collections.shuffle(shuffledList);
+		return shuffledList.toArray(new String[0]);
 	}
 }

@@ -207,7 +207,7 @@ public class LogIn extends JFrame {
 		String password = String.valueOf(passwordField.getPassword());
 		if (Login.isValidUser(username, password)) {
 			JOptionPane.showMessageDialog(LogIn.this, "Login Berhasil", "Success", JOptionPane.INFORMATION_MESSAGE);
-			Profile.showProfile(JDBC.getUser_id());
+			Profile.showProfile();
 			new UserProfile().setVisible(true);
 			dispose();
 		} else {

@@ -1,12 +1,14 @@
 package api;
 
+import gui.UserProfile;
+
 import javax.swing.*;
 
 public class TimerLabel extends JLabel implements Runnable {
 	public int time;
 	public boolean isRunning;
 	private Thread thread;
-	
+
 	public TimerLabel() {
 		time = 300;
 		isRunning = false;
@@ -21,6 +23,14 @@ public class TimerLabel extends JLabel implements Runnable {
 	
 	public void stop() {
 		isRunning = false;
+		MainGame.updateScoreIfTimesUp();
+		Profile.showProfile();
+		
+		new UserProfile().setVisible(true);
+		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+		if (frame != null) {
+			frame.dispose();
+		}
 	}
 	
 	public void reset() {

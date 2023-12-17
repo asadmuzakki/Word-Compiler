@@ -308,6 +308,5 @@ public class Register extends JFrame {
 	private JPanel jPanel1;
 	private JPasswordField passwordField;
 	private JPasswordField confirmPassfield;
-	private JTextField jTextField3;
 	private JTextField usernameField;
 }
