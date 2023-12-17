@@ -229,6 +229,9 @@ public class UserProfile extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }
+    public static String getStateGame(){
+        return stateGame;
+    }
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -266,6 +269,6 @@ public class UserProfile extends javax.swing.JFrame {
     private JPanel jPanel2;
     private JPanel jPanel3;
     private JPanel jPanel4;
-    public static String stateGame;
+    private static String stateGame;
     // End of variables declaration//GEN-END:variables
 }

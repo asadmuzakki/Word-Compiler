@@ -24,7 +24,7 @@ public class MainGame {
 		return level;
 	}
 	public static void startGame() {
-		if (UserProfile.stateGame.equals("New Game")) {
+		if (UserProfile.getStateGame().equals("New Game")) {
 			level += 1;
 			updateuser(JDBC.getUser_id());
 		}

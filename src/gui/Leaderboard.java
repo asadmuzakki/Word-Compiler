@@ -133,5 +133,5 @@ public class Leaderboard extends javax.swing.JFrame {
     private javax.swing.JPanel background;
     private javax.swing.JScrollPane scrollPanePlayer;
     // End of variables declaration//GEN-END:variables
-    public DefaultTableModel model = new DefaultTableModel();
+    private DefaultTableModel model = new DefaultTableModel();
 }
